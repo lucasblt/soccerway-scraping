@@ -1,0 +1,5 @@
+*.exe
+desktop.ini
+venv
+.ipynb_checkpoints
+*.csv
