@@ -3,3 +3,4 @@ desktop.ini
 venv
 .ipynb_checkpoints
 *.csv
+__pycache__

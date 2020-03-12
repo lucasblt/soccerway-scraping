@@ -60,7 +60,7 @@ def get_match_links(competitions):
 
     return flat_links
 
-def process_match(match, output):
+def process_match(match, output, hora = True):
     page = requests.get(match)
     soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -73,7 +73,10 @@ def process_match(match, output):
     ano = details_clearfix[0].find_all("dd")[0].string
     rodada = details_clearfix[0].find_all("dd")[2].string
     data_do_jogo = details_clearfix[0].findAll("span", {"class": "timestamp"})[0].string
-    horário_do_jogo = details_clearfix[0].findAll("span", {"class": "timestamp"})[1].string
+    if hora:
+        horário_do_jogo = details_clearfix[0].findAll("span", {"class": "timestamp"})[1].string
+    else:
+        horário_do_jogo = '-'
     ano = data_do_jogo[-4:]
     placar = ''.join(soup.find('div', class_='container middle').find('h3').string.split())
 
